@@ -1,7 +1,7 @@
 .swatchGrid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-auto-flow: column;
+    grid-auto-flow: row;
 }
 
 .swatchItem {
@@ -16,6 +16,7 @@
 .swatch {
     aspect-ratio: 1/1;
     margin-bottom: 0.5rem;
+    border: 1px solid #EAEAEA99;
 }
 
 .swatchTitle {
