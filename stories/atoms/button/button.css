@@ -2,7 +2,7 @@
   cursor: pointer;
   line-height: 1;
   padding: 1rem 2rem;
-  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-display);
 }
 
 .primary {
