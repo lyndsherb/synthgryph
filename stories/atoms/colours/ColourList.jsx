@@ -9,7 +9,7 @@ export const ColourList = () => {
             .filter((prop) => prop.startsWith('--color') || prop.startsWith('--colour'))
             .map((prop) => ({
                 key: prop,
-                name: prop.replace(/--colo(u?)r-/, ''),
+                name: prop.replace(/--colo(u?)r-/, '').replace(/-/g, ' ').replace(/_/g, ' '),
                 value: computed.getPropertyValue(prop),
             })).reverse();
     }, []);
