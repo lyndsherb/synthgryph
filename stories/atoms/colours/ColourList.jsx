@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'; 
-import './colourList.css';
 import convert from 'color-convert';
+import './colourList.css';
 
 export const ColourList = () => {
     const colours = useMemo(() => {
@@ -9,7 +9,10 @@ export const ColourList = () => {
         return [...computed]
             .filter((prop) => prop.startsWith('--color') || prop.startsWith('--colour'))
             .map((prop) => {
-                const value = computed.getPropertyValue(prop);
+                // this is now untidy; this might return a string or a string[], so at some point 
+                // if i want to work with this further i need to tidy it up.
+                // at least i've roughly figured out my idea
+                let value = computed.getPropertyValue(prop);
 
                 const valueType = (() => {
                     if (value.startsWith(('#'))) {
@@ -17,11 +20,15 @@ export const ColourList = () => {
                     }
 
                     if (value.startsWith('rgb')) {
+                        // if rgb/rgba, transforms into an array of [r, g, b, a]
+                        // see above comment re: transforming a string value into an array value
+                        value = value.replace(/rgb(a?)\(/, '').replace(')', '').split(',').map(str => str.trim());
+
                         return 'rgb';
                     }
 
                     return 'keyword';
-                })()
+                })();
 
                 return {
                     key: prop,
@@ -33,7 +40,7 @@ export const ColourList = () => {
                         },
                         {
                             type: 'rgb',
-                            value: valueType === 'rgb' ? value : convert[valueType].rgb(value).join(', '),
+                            value: valueType === 'rgb' ? value.join(', ') : convert[valueType].rgb(value).join(', '),
                         },
                         {
                             type: 'keyword',
