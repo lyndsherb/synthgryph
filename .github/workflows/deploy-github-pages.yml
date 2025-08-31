@@ -32,3 +32,6 @@ jobs:
         with:
           path: storybook-static # default: dist/storybook
           checkout: false # default: true
+      - name: "Copy robots.txt to generated files"
+        run: |
+          cp robots.txt storybook-static/robots.txt
