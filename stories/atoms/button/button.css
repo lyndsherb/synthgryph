@@ -1,0 +1,18 @@
+.button {
+  cursor: pointer;
+  line-height: 1;
+  padding: 1rem 2rem;
+}
+
+.primary {
+  border: 0;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  color: var(--color-bright);
+}
+
+.secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
