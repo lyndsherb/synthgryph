@@ -2,6 +2,7 @@
   cursor: pointer;
   line-height: 1;
   padding: 1rem 2rem;
+  font-weight: var(--font-weight-bold);
 }
 
 .primary {
@@ -11,8 +12,26 @@
   color: var(--color-bright);
 }
 
+.primary:hover,
+.primary:focus {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
 .secondary {
   background-color: transparent;
   border: 2px solid var(--color-secondary);
   color: var(--color-secondary);
+}
+
+.secondary:hover,
+.secondary:focus {
+  background-color: var(--color-secondary);
+  color: var(--color-bright);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  }
 }
