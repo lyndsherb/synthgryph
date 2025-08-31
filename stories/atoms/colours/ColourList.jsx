@@ -25,7 +25,7 @@ export const ColourList = () => {
 
                 return {
                     key: prop,
-                    name: prop.replace(/--colo(u?)r-/, '').replace(/-/g, ' ').replace(/_/g, ' '),
+                    name: prop.replace(/--colo(u?)r-/, '').replace(/-|_/g, ' '),
                     values: [
                         {
                             type: 'hex',
